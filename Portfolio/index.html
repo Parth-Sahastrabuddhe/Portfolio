@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Sahastrabuddhe | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="prompt">$</span> <span class="typing-text">./portfolio</span>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#about">about</a></li>
+            <li><a href="#experience">experience</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#skills">skills</a></li>
+            <li><a href="#contact">contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="terminal-btn red"></span>
+                <span class="terminal-btn yellow"></span>
+                <span class="terminal-btn green"></span>
+                <span class="terminal-title">bash ~ portfolio</span>
+            </div>
+            <div class="terminal-body">
+                <p><span class="prompt">$</span> whoami</p>
+                <h1 class="hero-name" id="typed-name"></h1>
+                <p><span class="prompt">$</span> cat role.txt</p>
+                <h2 class="hero-title">Software Engineer</h2>
+                <p><span class="prompt">$</span> echo $TAGLINE</p>
+                <p class="hero-tagline">Building scalable systems and intelligent solutions</p>
+                <p class="input-line"><span class="prompt">$</span> <span class="cursor">_</span></p>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator">
+            <span>scroll down</span>
+            <div class="arrow"></div>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title"><span class="prompt">$</span> cat about.md</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="code-block">
+                        <pre><code><span class="comment"># About Me</span>
+
+<span class="keyword">class</span> <span class="class-name">Developer</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self):
+        self.name = <span class="string">"Parth Sahastrabuddhe"</span>
+        self.role = <span class="string">"Software Engineer"</span>
+        self.location = <span class="string">"Buffalo, NY, USA"</span>
+        self.education = <span class="string">"MS in CS (AI/ML), University at Buffalo"</span>
+
+    <span class="keyword">def</span> <span class="function">get_bio</span>(self):
+        <span class="keyword">return</span> <span class="string">"""
+        Software Engineer with 3+ years of experience
+        building scalable backend services at Infosys.
+        Currently pursuing MS in Computer Science with
+        AI/ML specialization at University at Buffalo.
+        Passionate about building reliable systems
+        and intelligent ML-driven solutions.
+        """</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience">
+        <div class="container">
+            <h2 class="section-title"><span class="prompt">$</span> cat experience.log</h2>
+            <div class="experience-timeline">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-info">
+                            <h3>Senior Software Engineer</h3>
+                            <span class="company">@ Infosys</span>
+                        </div>
+                        <span class="experience-date">Sep 2022 – Aug 2024</span>
+                    </div>
+                    <ul class="experience-highlights">
+                        <li>Designed and developed backend services and RESTful APIs using C#/.NET and ASP.NET, supporting 20+ stakeholders</li>
+                        <li>Owned mission-critical backend systems, maintaining 99%+ uptime through proactive monitoring and incident resolution</li>
+                        <li>Optimized SQL Server queries and data models, improving performance by 25%</li>
+                        <li>Collaborated across 3+ international teams on code reviews and production releases</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-info">
+                            <h3>Software Engineer</h3>
+                            <span class="company">@ Infosys</span>
+                        </div>
+                        <span class="experience-date">Nov 2020 – Sep 2022</span>
+                    </div>
+                    <ul class="experience-highlights">
+                        <li>Implemented and maintained backend features using C#/.NET and RESTful APIs in a continuous delivery environment</li>
+                        <li>Debugged production issues through log and metric analysis, contributing to 30% reduction in incident resolution time</li>
+                        <li>Participated in reviews, testing, and release cycles across international teams</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title"><span class="prompt">$</span> ls -la ./projects/</h2>
+            <div class="projects-grid">
+                <!-- Project 1: SAM3 Medical Segmentation -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <span class="file-icon">></span>
+                        <h3>SAM3 Medical Segmentation</h3>
+                    </div>
+                    <p class="project-description">
+                        Research project adapting SAM3 segmentation model via few-shot expert correction for prompt-based inference. Implemented GPU-memory-aware adaptive batch sizing to maximize inference throughput without OOM.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PyTorch</span>
+                        <span class="tech-badge">CUDA</span>
+                        <span class="tech-badge">Medical Imaging</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" class="project-link">
+                            <span class="prompt">$</span> git clone
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 2: GenMatch -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <span class="file-icon">></span>
+                        <h3>GenMatch</h3>
+                    </div>
+                    <p class="project-description">
+                        Developing a CLIP-guided diffusion framework for open-vocabulary object presence detection. Combines CLIP embeddings with diffusion-generated grounding to enable detection of unseen categories.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PyTorch</span>
+                        <span class="tech-badge">CLIP</span>
+                        <span class="tech-badge">Diffusion Models</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" class="project-link">
+                            <span class="prompt">$</span> git clone
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 3: Geospatial API -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <span class="file-icon">></span>
+                        <h3>Geospatial Search API</h3>
+                    </div>
+                    <p class="project-description">
+                        Building a scalable REST API in Python and PostgreSQL (PostGIS) for location-based event data. Designing efficient geospatial search algorithms to rank events within user-defined radius.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">PostGIS</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" class="project-link">
+                            <span class="prompt">$</span> git clone
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title"><span class="prompt">$</span> cat skills.json</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 class="category-title">// Languages & Frameworks</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">C#/.NET</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Java</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="75"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">// AI/ML & Data</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">PyTorch/TensorFlow</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Deep Learning</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">PostgreSQL/SQL</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Data Pipelines</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">// Backend & DevOps</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">REST APIs</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="92"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Git/CI-CD</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">System Design</span>
+                            <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title"><span class="prompt">$</span> ./contact.sh</h2>
+            <div class="contact-content">
+                <div class="contact-terminal">
+                    <p><span class="prompt">$</span> echo "Let's connect!"</p>
+                    <p class="contact-message">
+                        I'm always open to discussing new projects, creative ideas,
+                        or opportunities to be part of your vision.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:sahastrabuddhe.parth@gmail.com" class="contact-link">
+                            <span class="prompt">$</span> mail -s "Hello" <span class="highlight">sahastrabuddhe.parth@gmail.com</span>
+                        </a>
+                        <a href="tel:+17163356368" class="contact-link">
+                            <span class="prompt">$</span> call <span class="highlight">+1 716-335-6368</span>
+                        </a>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" class="contact-link">
+                            <span class="prompt">$</span> open <span class="highlight">github.com/Parth-Sahastrabuddhe</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/parth-sahastrabuddhe-372b8118b/" target="_blank" class="contact-link">
+                            <span class="prompt">$</span> open <span class="highlight">linkedin.com/in/parth-sahastrabuddhe</span>
+                        </a>
+                        <a href="https://leetcode.com/u/Parth-Sahastrabuddhe/" target="_blank" class="contact-link">
+                            <span class="prompt">$</span> open <span class="highlight">leetcode.com/u/Parth-Sahastrabuddhe</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><span class="prompt">$</span> echo "Built with HTML, CSS & JS"</p>
+            <p class="copyright">&copy; 2025 Parth Sahastrabuddhe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
