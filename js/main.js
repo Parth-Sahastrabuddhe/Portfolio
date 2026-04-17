@@ -1,167 +1,185 @@
+// ===== Cookie Consent & Google Analytics =====
+const GA_ID = 'G-E5YZHSZVF8';
+
+function loadGA() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+}
+
+(function initCookieConsent() {
+    const banner = document.getElementById('cookieBanner');
+    const consent = localStorage.getItem('cookie-consent');
+
+    if (consent === 'accepted') {
+        loadGA();
+    } else if (consent !== 'declined') {
+        banner.classList.add('visible');
+    }
+
+    document.getElementById('cookieAccept').addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner.classList.remove('visible');
+        loadGA();
+    });
+
+    document.getElementById('cookieDecline').addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'declined');
+        banner.classList.remove('visible');
+    });
+})();
+
 // ===== DOM Elements =====
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
-const typedName = document.getElementById('typed-name');
-const skillBars = document.querySelectorAll('.skill-progress');
 const sections = document.querySelectorAll('.section');
+const navbar = document.querySelector('.navbar');
+const themeToggle = document.getElementById('themeToggle');
+const contactForm = document.getElementById('contactForm');
 
-// ===== Configuration =====
-const CONFIG = {
-    name: 'Parth Sahastrabuddhe',
-    typingSpeed: 100,
-    deletingSpeed: 50,
-    pauseDuration: 2000
-};
+// ===== Theme Toggle =====
+function getTheme() {
+    return document.documentElement.getAttribute('data-theme');
+}
 
-// ===== Mobile Navigation Toggle =====
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
 
-    // Animate hamburger
-    const hamburger = navToggle.querySelector('.hamburger');
-    hamburger.classList.toggle('active');
+themeToggle.addEventListener('click', () => {
+    setTheme(getTheme() === 'dark' ? 'light' : 'dark');
 });
 
-// Close mobile nav when clicking a link
+// ===== Mobile Navigation =====
+navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
         navLinks.classList.remove('active');
     });
 });
 
-// ===== Typing Animation =====
-class TypeWriter {
-    constructor(element, text, speed = 100) {
-        this.element = element;
-        this.text = text;
-        this.speed = speed;
-        this.currentIndex = 0;
-    }
+// ===== Active Nav Link on Scroll =====
+const updateActiveLink = () => {
+    const scrollY = window.scrollY + 100;
 
-    type() {
-        if (this.currentIndex < this.text.length) {
-            this.element.textContent += this.text.charAt(this.currentIndex);
-            this.currentIndex++;
-            setTimeout(() => this.type(), this.speed);
-        }
-    }
+    sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
 
-    start() {
-        this.element.textContent = '';
-        this.currentIndex = 0;
-        this.type();
-    }
-}
-
-// Initialize typing animation when page loads
-window.addEventListener('load', () => {
-    if (typedName) {
-        const typeWriter = new TypeWriter(typedName, CONFIG.name, CONFIG.typingSpeed);
-        setTimeout(() => typeWriter.start(), 500);
-    }
-});
-
-// ===== Skill Bars Animation =====
-const animateSkillBars = () => {
-    skillBars.forEach(bar => {
-        const progress = bar.getAttribute('data-progress');
-        const rect = bar.getBoundingClientRect();
-
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            bar.style.width = `${progress}%`;
+        if (scrollY >= top && scrollY < top + height) {
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
+            });
         }
     });
 };
 
-// ===== Intersection Observer for Animations =====
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
+window.addEventListener('scroll', updateActiveLink, { passive: true });
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-
-            // Animate skill bars when skills section is visible
-            if (entry.target.id === 'skills') {
-                animateSkillBars();
+// ===== Intersection Observer: Fade-in =====
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
             }
-        }
-    });
-}, observerOptions);
+        });
+    },
+    { threshold: 0.1 }
+);
 
-// Observe all sections
 sections.forEach(section => {
     section.classList.add('fade-in');
     observer.observe(section);
 });
 
-// ===== Smooth Scrolling for Navigation =====
+// ===== Smooth Scroll with Navbar Offset =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-
+        const target = document.querySelector(anchor.getAttribute('href'));
         if (target) {
-            const navHeight = document.querySelector('.navbar').offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
-
+            const offset = navbar.offsetHeight;
             window.scrollTo({
-                top: targetPosition,
+                top: target.offsetTop - offset,
                 behavior: 'smooth'
             });
         }
     });
 });
 
-// ===== Navbar Background on Scroll =====
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
+// ===== Project Category Filters =====
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
 
-    // Add shadow when scrolled
-    if (currentScroll > 50) {
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-    } else {
-        navbar.style.boxShadow = 'none';
-    }
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-    lastScroll = currentScroll;
-});
-
-// ===== Active Navigation Link =====
-const updateActiveNavLink = () => {
-    const scrollPosition = window.scrollY + 100;
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
+        projectCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
     });
-};
-
-window.addEventListener('scroll', updateActiveNavLink);
-
-// ===== Console Easter Egg =====
-console.log('%c Welcome to my portfolio!', 'color: #00ff00; font-size: 20px; font-weight: bold;');
-console.log('%c Built with HTML, CSS & JavaScript', 'color: #00d9ff; font-size: 14px;');
-console.log('%c Feel free to explore the code!', 'color: #ffd700; font-size: 14px;');
-
-// ===== Prevent FOUC (Flash of Unstyled Content) =====
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
 });
+
+// ===== Contact Form =====
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btn = contactForm.querySelector('.btn-submit');
+        const btnText = btn.querySelector('.btn-text');
+        const btnLoading = btn.querySelector('.btn-loading');
+        const status = document.getElementById('formStatus');
+
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        btn.disabled = true;
+        status.textContent = '';
+        status.className = 'form-status';
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                status.textContent = 'Message sent! I\'ll get back to you soon.';
+                status.classList.add('success');
+                contactForm.reset();
+            } else {
+                status.textContent = 'Something went wrong. Please try again or email me directly.';
+                status.classList.add('error');
+            }
+        } catch {
+            status.textContent = 'Network error. Please try again or email me directly.';
+            status.classList.add('error');
+        }
+
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        btn.disabled = false;
+    });
+}

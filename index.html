@@ -1,314 +1,668 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parth Sahastrabuddhe | Software Engineer</title>
+    <meta name="description" content="Backend Software Engineer with 3.5+ years building scalable microservices and distributed systems. MS in CS (AI/ML) at University at Buffalo.">
+    <meta property="og:title" content="Parth Sahastrabuddhe | Software Engineer">
+    <meta property="og:description" content="Backend Software Engineer with 3.5+ years building scalable microservices and ML-driven solutions.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const preferred = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', preferred);
+        })();
+    </script>
 </head>
 <body>
+    <a href="#hero" class="skip-link">Skip to content</a>
+
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-brand">
-            <span class="prompt">$</span> <span class="typing-text">./portfolio</span>
+        <div class="container nav-container">
+            <a href="#" class="nav-brand">PS</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="Parth_Sahastrabuddhe_Resume.pdf" target="_blank" rel="noopener" class="nav-resume-link">Resume</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
         </div>
-        <button class="nav-toggle" aria-label="Toggle navigation">
-            <span class="hamburger"></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="#about">about</a></li>
-            <li><a href="#experience">experience</a></li>
-            <li><a href="#projects">projects</a></li>
-            <li><a href="#skills">skills</a></li>
-            <li><a href="#contact">contact</a></li>
-        </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="hero" class="hero">
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <span class="terminal-btn red"></span>
-                <span class="terminal-btn yellow"></span>
-                <span class="terminal-btn green"></span>
-                <span class="terminal-title">bash ~ portfolio</span>
+        <div class="hero-glow"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <p class="hero-label">Hi, I'm</p>
+                <h1 class="hero-name">Parth<br>Sahastrabuddhe</h1>
+                <h2 class="hero-role">Software Engineer</h2>
+                <p class="hero-description">
+                    MS in Computer Science graduate from the University at Buffalo.
+                    Combining 3.5 years of backend rigor with AI/ML expertise.
+                    Currently seeking Software/ML Engineering opportunities.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                    <a href="Parth_Sahastrabuddhe_Resume.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-resume">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Resume
+                    </a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/parth-sahastrabuddhe/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <a href="https://leetcode.com/u/Parth-Sahastrabuddhe/" target="_blank" rel="noopener" aria-label="LeetCode" title="LeetCode">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </a>
+                    <a href="mailto:sahastrabuddhe.parth@gmail.com" aria-label="Email" title="Email">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </a>
+                </div>
             </div>
-            <div class="terminal-body">
-                <p><span class="prompt">$</span> whoami</p>
-                <h1 class="hero-name" id="typed-name"></h1>
-                <p><span class="prompt">$</span> cat role.txt</p>
-                <h2 class="hero-title">Software Engineer</h2>
-                <p><span class="prompt">$</span> echo $TAGLINE</p>
-                <p class="hero-tagline">Building scalable systems and intelligent solutions</p>
-                <p class="input-line"><span class="prompt">$</span> <span class="cursor">_</span></p>
+            <div class="hero-photo">
+                <!-- Add your photo: replace src with your image path, e.g. "img/photo.jpg" -->
+                <img src="Headshot.png" alt="Parth Sahastrabuddhe" />
             </div>
         </div>
-        <a href="#about" class="scroll-indicator">
-            <span>scroll down</span>
-            <div class="arrow"></div>
-        </a>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
+    <!-- About -->
+    <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title"><span class="prompt">$</span> cat about.md</h2>
-            <div class="about-content">
+            <h2 class="section-label">About</h2>
+            <div class="about-grid">
                 <div class="about-text">
-                    <div class="code-block">
-                        <pre><code><span class="comment"># About Me</span>
-
-<span class="keyword">class</span> <span class="class-name">Developer</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self):
-        self.name = <span class="string">"Parth Sahastrabuddhe"</span>
-        self.role = <span class="string">"Software Engineer"</span>
-        self.location = <span class="string">"Buffalo, NY, USA"</span>
-        self.education = <span class="string">"MS in CS (AI/ML), University at Buffalo"</span>
-
-    <span class="keyword">def</span> <span class="function">get_bio</span>(self):
-        <span class="keyword">return</span> <span class="string">"""
-        Software Engineer with 3+ years of experience
-        building scalable backend services at Infosys.
-        Currently pursuing MS in Computer Science with
-        AI/ML specialization at University at Buffalo.
-        Passionate about building reliable systems
-        and intelligent ML-driven solutions.
-        """</span></code></pre>
+                    <p>
+                        I spent 3.5 years at Infosys building the backend systems that
+                        companies depend on &mdash; high-volume transaction services, SQL
+                        performance tuning (25% faster queries), CI/CD automation that cut
+                        release cycles by 40%, and on-call ownership of platforms with 99%+
+                        uptime. My stack centers on C#/.NET, Python, and cloud-native
+                        patterns with Docker, Kubernetes, and GitLab CI/CD.
+                    </p>
+                    <p>
+                        After graduating with my MS in Computer Science from the
+                        University at Buffalo (3.8 GPA), I've continued to bridge the
+                        gap between backend engineering and AI. As a Graduate Research
+                        Assistant, I focus on medical image segmentation and generative
+                        AI pipelines &mdash; applying the same production-grade discipline
+                        I learned in industry to complex ML models. I'm now looking to
+                        bring this dual expertise to a full-time Software or Machine
+                        Learning Engineering role.
+                    </p>
+                </div>
+                <div class="about-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Location</span>
+                        <span class="detail-value">Buffalo, NY</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Education</span>
+                        <span class="detail-value">MS in CS, UB &rsquo;25 (3.8 GPA)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Seeking</span>
+                        <span class="detail-value">Software / ML Engineering</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Experience</span>
+                        <span class="detail-value">3.5+ years</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section experience">
+    <!-- Education -->
+    <section id="education" class="section section-alt">
         <div class="container">
-            <h2 class="section-title"><span class="prompt">$</span> cat experience.log</h2>
-            <div class="experience-timeline">
+            <h2 class="section-label">Education</h2>
+            <div class="education-list">
+                <div class="education-card">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-degree">M.S. in Computer Science</h3>
+                            <p class="education-school">University at Buffalo, SUNY</p>
+                        </div>
+                        <div class="education-meta">
+                            <span class="education-date">Conferred December 2025</span>
+                            <span class="education-gpa">GPA: 3.8 / 4.0</span>
+                        </div>
+                    </div>
+                    <p class="education-focus">Specialization in Artificial Intelligence &amp; Machine Learning</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-degree">B.E. in Mechanical Engineering</h3>
+                            <p class="education-school">Savitribai Phule Pune University</p>
+                        </div>
+                        <div class="education-meta">
+                            <span class="education-date">May 2016 &mdash; Oct 2020</span>
+                            <span class="education-gpa">GPA: 3.11 / 4.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-label">Experience</h2>
+            <div class="experience-list">
                 <div class="experience-card">
                     <div class="experience-header">
-                        <div class="experience-info">
-                            <h3>Senior Software Engineer</h3>
-                            <span class="company">@ Infosys</span>
+                        <div>
+                            <h3 class="experience-role">Graduate Research Assistant</h3>
+                            <p class="experience-company">University at Buffalo</p>
                         </div>
-                        <span class="experience-date">Sep 2022 – Aug 2024</span>
+                        <span class="experience-date">Aug 2024 &mdash; Present</span>
                     </div>
-                    <ul class="experience-highlights">
-                        <li>Designed and developed backend services and RESTful APIs using C#/.NET and ASP.NET, supporting 20+ stakeholders</li>
-                        <li>Owned mission-critical backend systems, maintaining 99%+ uptime through proactive monitoring and incident resolution</li>
-                        <li>Optimized SQL Server queries and data models, improving performance by 25%</li>
-                        <li>Collaborated across 3+ international teams on code reviews and production releases</li>
+                    <ul class="experience-points">
+                        <li>Adapting the <strong>SAM3</strong> segmentation model via few-shot expert correction for prompt-based medical image inference under faculty supervision</li>
+                        <li>Implementing GPU-memory-aware adaptive batch sizing using <strong>PyTorch</strong> and <strong>CUDA</strong> to maximize inference throughput without OOM on production-scale medical imaging datasets</li>
+                        <li>Building end-to-end ML deployment workflows including data preprocessing, model evaluation, and reproducible experiment tracking</li>
                     </ul>
                 </div>
                 <div class="experience-card">
                     <div class="experience-header">
-                        <div class="experience-info">
-                            <h3>Software Engineer</h3>
-                            <span class="company">@ Infosys</span>
+                        <div>
+                            <h3 class="experience-role">Senior Software Engineer</h3>
+                            <p class="experience-company">Infosys</p>
                         </div>
-                        <span class="experience-date">Nov 2020 – Sep 2022</span>
+                        <span class="experience-date">Sep 2022 &mdash; Aug 2024</span>
                     </div>
-                    <ul class="experience-highlights">
-                        <li>Implemented and maintained backend features using C#/.NET and RESTful APIs in a continuous delivery environment</li>
-                        <li>Debugged production issues through log and metric analysis, contributing to 30% reduction in incident resolution time</li>
-                        <li>Participated in reviews, testing, and release cycles across international teams</li>
+                    <ul class="experience-points">
+                        <li>Architected scalable backend microservices for high-volume transaction workflows, driving adoption of <strong>ASP.NET Core</strong> and containerized deployments with <strong>Docker</strong> to improve deployment isolation and operational reliability</li>
+                        <li>Led reliability for mission-critical platforms with on-call ownership, directing root-cause analysis for P1/P2 incidents and maintaining <strong>99%+ uptime</strong> SLA across distributed services</li>
+                        <li>Profiled and optimized complex database access patterns across shared services, improving query performance by over <strong>25%</strong> under peak production load</li>
+                        <li>Standardized CI/CD workflows using <strong>GitLab CI/CD</strong> across the team, reducing release cycles by <strong>40%</strong> and establishing automated testing gates for production deployments</li>
+                        <li>Coordinated technical specifications and production releases with engineers across 3+ international teams using <strong>GitLab</strong>, <strong>Jira</strong>, and <strong>Confluence</strong></li>
+                        <li>Authored technical design documents, API specifications, and runbooks; mentored junior engineers on code review standards and deployment practices</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-role">Software Engineer</h3>
+                            <p class="experience-company">Infosys</p>
+                        </div>
+                        <span class="experience-date">Nov 2020 &mdash; Sep 2022</span>
+                    </div>
+                    <ul class="experience-points">
+                        <li>Developed and maintained core backend features and shared services using <strong>C#/.NET</strong> and <strong>RESTful APIs</strong>, delivering production-ready endpoints in a continuous delivery environment</li>
+                        <li>Designed database schemas and optimized stored procedures in <strong>SQL Server</strong>, reducing query execution time by <strong>20%</strong> for high-traffic reporting modules</li>
+                        <li>Built reusable service components following <strong>SOLID principles</strong> and design patterns, improving code maintainability and reducing technical debt across the service layer</li>
+                        <li>Implemented comprehensive unit and integration tests using <strong>xUnit/NUnit</strong>, achieving <strong>85%+ code coverage</strong> and reducing post-release defects</li>
+                        <li>Contributed to <strong>Agile/Scrum</strong> sprint planning and delivery using <strong>Jira</strong> and <strong>ServiceNow</strong>, ensuring consistent execution across the full SDLC</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section projects">
+    <!-- Projects -->
+    <section id="projects" class="section section-alt">
         <div class="container">
-            <h2 class="section-title"><span class="prompt">$</span> ls -la ./projects/</h2>
+            <h2 class="section-label">Projects</h2>
+            <!-- TODO: Update each project-link href to point to the specific repo -->
+            <div class="project-filters" id="projectFilters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai-ml">AI/ML Research</button>
+                <button class="filter-btn" data-filter="systems">Systems & Backend</button>
+            </div>
             <div class="projects-grid">
-                <!-- Project 1: SAM3 Medical Segmentation -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <span class="file-icon">></span>
-                        <h3>SAM3 Medical Segmentation</h3>
+
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">SAM3 Medical Segmentation</h3>
+                            <span class="project-status status-research">Research</span>
+                        </div>
+                        <p class="project-description">
+                            Adapting SAM3 segmentation model via few-shot expert correction
+                            for prompt-based inference. Implementing GPU-memory-aware adaptive
+                            batch sizing to maximize inference throughput without OOM using
+                            production-style ML deployment workflows.
+                        </p>
                     </div>
-                    <p class="project-description">
-                        Research project adapting SAM3 segmentation model via few-shot expert correction for prompt-based inference. Implemented GPU-memory-aware adaptive batch sizing to maximize inference throughput without OOM.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">PyTorch</span>
-                        <span class="tech-badge">CUDA</span>
-                        <span class="tech-badge">Medical Imaging</span>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>CUDA</span>
+                            <span>Medical Imaging</span>
+                        </div>
+                        <span class="project-label-muted">Research Assistantship | UB</span>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" class="project-link">
-                            <span class="prompt">$</span> git clone
+                </article>
+
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">GenMatch</h3>
+                            <span class="project-status status-research">Independent Research</span>
+                        </div>
+                        <p class="project-description">
+                            Generative-driven framework for open-vocabulary object presence
+                            detection. Combines CLIP-style embeddings with diffusion-generated
+                            grounding to enable novel detection of unseen categories without
+                            labeled training data.
+                        </p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>PyTorch</span>
+                            <span>CLIP</span>
+                            <span>Diffusion Models</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
                         </a>
                     </div>
                 </article>
 
-                <!-- Project 2: GenMatch -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <span class="file-icon">></span>
-                        <h3>GenMatch</h3>
+                <article class="project-card" data-category="systems">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">Ripple Policy Impact Simulator</h3>
+                            <span class="project-status status-complete">Completed</span>
+                        </div>
+                        <p class="project-description">
+                            AI-driven platform to simulate socioeconomic effects of public
+                            policies across NY State. Implemented Monte Carlo engine with
+                            50-500 parallel simulations achieving 95% confidence intervals
+                            for modeling employment, housing, and cost of living.
+                        </p>
                     </div>
-                    <p class="project-description">
-                        Developing a CLIP-guided diffusion framework for open-vocabulary object presence detection. Combines CLIP embeddings with diffusion-generated grounding to enable detection of unseen categories.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">PyTorch</span>
-                        <span class="tech-badge">CLIP</span>
-                        <span class="tech-badge">Diffusion Models</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" class="project-link">
-                            <span class="prompt">$</span> git clone
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>FastAPI</span>
+                            <span>React</span>
+                            <span>Gemini 1.5 Pro</span>
+                            <span>Monte Carlo</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
                         </a>
                     </div>
                 </article>
 
-                <!-- Project 3: Geospatial API -->
-                <article class="project-card">
-                    <div class="project-header">
-                        <span class="file-icon">></span>
-                        <h3>Geospatial Search API</h3>
+                <article class="project-card" data-category="systems">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">OS Thread Scheduler (Pintos)</h3>
+                            <span class="project-status status-complete">Completed</span>
+                        </div>
+                        <p class="project-description">
+                            Developed core kernel modules including MLFQS scheduling, priority
+                            donation, and argument parsing in C. Implemented semaphore-based
+                            synchronization, improving concurrency stability by 35% and
+                            achieving 95% success on 200+ test scenarios.
+                        </p>
                     </div>
-                    <p class="project-description">
-                        Building a scalable REST API in Python and PostgreSQL (PostGIS) for location-based event data. Designing efficient geospatial search algorithms to rank events within user-defined radius.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">PostgreSQL</span>
-                        <span class="tech-badge">PostGIS</span>
-                        <span class="tech-badge">Docker</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" class="project-link">
-                            <span class="prompt">$</span> git clone
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>C</span>
+                            <span>Kernel Dev</span>
+                            <span>MLFQS</span>
+                            <span>Concurrency</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
                         </a>
                     </div>
                 </article>
+
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">Text-to-Image Generation</h3>
+                            <span class="project-status status-complete">Completed</span>
+                        </div>
+                        <p class="project-description">
+                            Built a text-to-image pipeline with prompt embeddings,
+                            schedulers, and UNet denoisers in PyTorch to generate
+                            high-resolution images from text prompts.
+                        </p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>Stable Diffusion</span>
+                            <span>UNet</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">TF Lite Model Optimization</h3>
+                            <span class="project-status status-complete">Completed</span>
+                        </div>
+                        <p class="project-description">
+                            Trained and optimized a CNN on CIFAR-10 for edge inference,
+                            applying FP16 &amp; INT8 quantization to reduce model from
+                            37MB to 6MB while maintaining 80% accuracy.
+                        </p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>TensorFlow Lite</span>
+                            <span>Quantization</span>
+                            <span>Edge AI</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">Autonomous Navigation (RL)</h3>
+                            <span class="project-status status-complete">Completed</span>
+                        </div>
+                        <p class="project-description">
+                            Custom RL agent using Q-learning and Deep Q-Networks to
+                            navigate grid-based environments with dynamic obstacles.
+                            Improved path efficiency by 35%.
+                        </p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>DQN</span>
+                            <span>RL</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">Sentiment Analysis (LSTM)</h3>
+                            <span class="project-status status-complete">Completed</span>
+                        </div>
+                        <p class="project-description">
+                            Multi-layer LSTM and BiLSTM models using GloVe embeddings on
+                            movie reviews, achieving 78%+ accuracy. Fine-tuned for
+                            generalization on noisy text data.
+                        </p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>LSTM</span>
+                            <span>GloVe</span>
+                            <span>NLP</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">Flower Classification (ResNet-34)</h3>
+                            <span class="project-status status-complete">Completed</span>
+                        </div>
+                        <p class="project-description">
+                            Custom ResNet-34 model fine-tuned with learning rate
+                            scheduling, achieving 87% accuracy &mdash; 12% improvement
+                            over the baseline model.
+                        </p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>PyTorch</span>
+                            <span>ResNet</span>
+                            <span>Transfer Learning</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="systems">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">Loan Transaction & Incident API</h3>
+                            <span class="project-status status-active">Active</span>
+                        </div>
+                        <p class="project-description">
+                            Production-style backend service using ASP.NET Core and SQL with
+                            layered architecture, business rule validation, transactional
+                            consistency, and incident logging across 10+ API endpoints
+                            demonstrating reliability workflows.
+                        </p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>ASP.NET Core</span>
+                            <span>SQL Server</span>
+                            <span>REST APIs</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="ai-ml">
+                    <div class="project-accent"></div>
+                    <div class="project-content">
+                        <div class="project-title-row">
+                            <h3 class="project-name">LLM Fine-Tuning for Ed. Assistant</h3>
+                            <span class="project-status status-research">Research</span>
+                        </div>
+                        <p class="project-description">
+                            Fine-tuning a large language model using Hugging Face and
+                            prompt engineering to enhance response accuracy in a
+                            course-specific Q&amp;A assistant.
+                        </p>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-tech">
+                            <span>Hugging Face</span>
+                            <span>LLMs</span>
+                            <span>Prompt Eng.</span>
+                        </div>
+                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            GitHub
+                        </a>
+                    </div>
+                </article>
+
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section skills">
+    <!-- Skills -->
+    <section id="skills" class="section">
         <div class="container">
-            <h2 class="section-title"><span class="prompt">$</span> cat skills.json</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3 class="category-title">// Languages & Frameworks</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">C#/.NET</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Java</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="75"></div></div>
-                        </div>
+            <h2 class="section-label">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">HTML/CSS</span>
                     </div>
                 </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">// AI/ML & Data</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">PyTorch/TensorFlow</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Deep Learning</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">PostgreSQL/SQL</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Data Pipelines</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
-                        </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">.NET / ASP.NET</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Flask</span>
                     </div>
                 </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">// Backend & DevOps</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">REST APIs</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="92"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Docker</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Git/CI-CD</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">System Design</span>
-                            <div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div>
-                        </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title">AI / ML</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">LLM Fine-Tuning</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Diffusion Models</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Tools & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitLab CI/CD</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Postman</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostGIS</span>
+                        <span class="skill-tag">NoSQL</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title">Systems & Practices</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">System Design</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">OS Internals</span>
+                        <span class="skill-tag">Agile/Scrum</span>
+                        <span class="skill-tag">Unit Testing</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <!-- Contact -->
+    <section id="contact" class="section section-alt">
         <div class="container">
-            <h2 class="section-title"><span class="prompt">$</span> ./contact.sh</h2>
-            <div class="contact-content">
-                <div class="contact-terminal">
-                    <p><span class="prompt">$</span> echo "Let's connect!"</p>
-                    <p class="contact-message">
-                        I'm always open to discussing new projects, creative ideas,
-                        or opportunities to be part of your vision.
-                    </p>
-                    <div class="contact-links">
-                        <a href="mailto:sahastrabuddhe.parth@gmail.com" class="contact-link">
-                            <span class="prompt">$</span> mail -s "Hello" <span class="highlight">sahastrabuddhe.parth@gmail.com</span>
-                        </a>
-                        <a href="tel:+17163356368" class="contact-link">
-                            <span class="prompt">$</span> call <span class="highlight">+1 716-335-6368</span>
-                        </a>
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" class="contact-link">
-                            <span class="prompt">$</span> open <span class="highlight">github.com/Parth-Sahastrabuddhe</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/parth-sahastrabuddhe/" target="_blank" class="contact-link">
-                            <span class="prompt">$</span> open <span class="highlight">linkedin.com/in/parth-sahastrabuddhe</span>
-                        </a>
-                        <a href="https://leetcode.com/u/Parth-Sahastrabuddhe/" target="_blank" class="contact-link">
-                            <span class="prompt">$</span> open <span class="highlight">leetcode.com/u/Parth-Sahastrabuddhe</span>
-                        </a>
+            <h2 class="section-label">Get in Touch</h2>
+            <p class="contact-intro">
+                Have a project in mind, want to collaborate, or just want to say hi?
+                Send me a message and I'll get back to you.
+            </p>
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xaqdebzj" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What's this about?">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-loading" style="display:none;">Sending...</span>
+                </button>
+                <p class="form-status" id="formStatus"></p>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p><span class="prompt">$</span> echo "Built with HTML, CSS & JS"</p>
-            <p class="copyright">&copy; 2025 Parth Sahastrabuddhe. All rights reserved.</p>
+            <p>&copy; 2026 Parth Sahastrabuddhe</p>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p class="cookie-text">This site uses cookies for analytics to understand how visitors interact with it.</p>
+        <div class="cookie-actions">
+            <button class="btn-cookie btn-cookie-decline" id="cookieDecline">Decline</button>
+            <button class="btn-cookie btn-cookie-accept" id="cookieAccept">Accept</button>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
