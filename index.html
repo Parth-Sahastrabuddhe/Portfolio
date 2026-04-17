@@ -287,7 +287,6 @@
     <section id="projects" class="section section-alt">
         <div class="container">
             <h2 class="section-label">Projects</h2>
-            <!-- TODO: Update each project-link href to point to the specific repo -->
             <div class="project-filters" id="projectFilters">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="ai-ml">AI/ML Research</button>
@@ -326,10 +325,11 @@
                             <span class="project-status status-complete">Completed</span>
                         </div>
                         <p class="project-description">
-                            Developed a generative-driven framework combining CLIP-style
-                            embeddings with diffusion-generated grounding for open-vocabulary
-                            detection of unseen object categories without labeled training
-                            data, using PyTorch.
+                            Zero-shot, open-vocabulary object detector built on CLIP with
+                            a sliding-window patch scoring method &mdash; each patch is
+                            compared to a natural-language prompt to generate a similarity
+                            heatmap, then processed into a bounding box. Future scope:
+                            extend to diffusion-generated grounding for finer localization.
                         </p>
                     </div>
                     <div class="project-footer">
@@ -337,9 +337,9 @@
                             <span>Python</span>
                             <span>PyTorch</span>
                             <span>CLIP</span>
-                            <span>Diffusion Models</span>
+                            <span>Zero-Shot</span>
                         </div>
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                        <a href="https://github.com/Parth-Sahastrabuddhe/GenMatch" target="_blank" rel="noopener" class="project-link">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                             GitHub
                         </a>
@@ -354,20 +354,22 @@
                             <span class="project-status status-complete">Completed</span>
                         </div>
                         <p class="project-description">
-                            AI-driven platform to simulate socioeconomic effects of public
-                            policies across NY State. Implemented Monte Carlo engine with
-                            50-500 parallel simulations achieving 95% confidence intervals
-                            for modeling employment, housing, and cost of living.
+                            Economic simulation platform where users tweak policy sliders
+                            (minimum wage, carbon tax, housing subsidy, EV incentives) to
+                            see Monte Carlo-projected effects on income, employment, rent
+                            burden, emissions, and equity (Gini coefficient). 50&ndash;500
+                            parallel runs yield 95% confidence intervals; Gemini translates
+                            statistical output into plain-language policy recommendations.
                         </p>
                     </div>
                     <div class="project-footer">
                         <div class="project-tech">
-                            <span>FastAPI</span>
                             <span>React</span>
-                            <span>Gemini 1.5 Pro</span>
+                            <span>Gemini</span>
                             <span>Monte Carlo</span>
+                            <span>Recharts</span>
                         </div>
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                        <a href="https://github.com/Parth-Sahastrabuddhe/Ripple" target="_blank" rel="noopener" class="project-link">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                             GitHub
                         </a>
@@ -395,10 +397,6 @@
                             <span>MLFQS</span>
                             <span>Concurrency</span>
                         </div>
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            GitHub
-                        </a>
                     </div>
                 </article>
 
@@ -410,18 +408,21 @@
                             <span class="project-status status-complete">Completed</span>
                         </div>
                         <p class="project-description">
-                            Built a text-to-image pipeline with prompt embeddings,
-                            schedulers, and UNet denoisers in PyTorch to generate
-                            high-resolution images from text prompts.
+                            Comparative text-to-image pipeline exploring GAN (DCGAN,
+                            StyleGAN), diffusion (Stable Diffusion with UNet denoisers),
+                            and Transformer-based architectures. Fine-tuned on COCO
+                            Captions, CUB-200 Birds, and Oxford-102 Flowers; evaluated
+                            with FID, Inception Score, and CLIP-based metrics.
                         </p>
                     </div>
                     <div class="project-footer">
                         <div class="project-tech">
                             <span>PyTorch</span>
                             <span>Stable Diffusion</span>
+                            <span>GANs</span>
                             <span>UNet</span>
                         </div>
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                        <a href="https://github.com/Parth-Sahastrabuddhe/Text-to-Image-Generation" target="_blank" rel="noopener" class="project-link">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                             GitHub
                         </a>
@@ -436,18 +437,21 @@
                             <span class="project-status status-complete">Completed</span>
                         </div>
                         <p class="project-description">
-                            Trained and optimized a CNN on CIFAR-10 for edge inference,
-                            applying FP16 &amp; INT8 quantization to reduce model from
-                            37MB to 6MB while maintaining 80% accuracy.
+                            Trained a 3.2M-parameter CNN on CIFAR-10 to 81.3% accuracy,
+                            then benchmarked Keras vs. TFLite vs. FP16-quantized TFLite
+                            for edge deployment. FP16 quantization cut model size from
+                            37 MB to 6.2 MB &mdash; an 83% reduction with zero measurable
+                            accuracy loss on the 10K-image test set.
                         </p>
                     </div>
                     <div class="project-footer">
                         <div class="project-tech">
                             <span>TensorFlow Lite</span>
                             <span>Quantization</span>
+                            <span>CNN</span>
                             <span>Edge AI</span>
                         </div>
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
+                        <a href="https://github.com/Parth-Sahastrabuddhe/Tensorflowlite-code-demo" target="_blank" rel="noopener" class="project-link">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                             GitHub
                         </a>
@@ -476,36 +480,6 @@
                             <span>gRPC</span>
                             <span>Distributed Systems</span>
                         </div>
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            GitHub
-                        </a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-category="ai-ml">
-                    <div class="project-accent"></div>
-                    <div class="project-content">
-                        <div class="project-title-row">
-                            <h3 class="project-name">LLM Fine-Tuning for Ed. Assistant</h3>
-                            <span class="project-status status-research">Research</span>
-                        </div>
-                        <p class="project-description">
-                            Fine-tuning a large language model using Hugging Face and
-                            prompt engineering to enhance response accuracy in a
-                            course-specific Q&amp;A assistant.
-                        </p>
-                    </div>
-                    <div class="project-footer">
-                        <div class="project-tech">
-                            <span>Hugging Face</span>
-                            <span>LLMs</span>
-                            <span>Prompt Eng.</span>
-                        </div>
-                        <a href="https://github.com/Parth-Sahastrabuddhe" target="_blank" rel="noopener" class="project-link">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                            GitHub
-                        </a>
                     </div>
                 </article>
 
