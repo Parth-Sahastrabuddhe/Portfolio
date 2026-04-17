@@ -826,12 +826,6 @@ ul { list-style: none; }
     flex-shrink: 0;
 }
 
-.status-progress {
-    color: #f59e0b;
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.25);
-}
-
 .status-complete {
     color: #10b981;
     background: rgba(16, 185, 129, 0.1);
@@ -1131,4 +1125,20 @@ ul { list-style: none; }
     .experience-header { flex-direction: column; }
     .form-row { grid-template-columns: 1fr; }
     .cookie-banner { flex-direction: column; text-align: center; gap: 0.75rem; }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+    }
 }

@@ -107,6 +107,8 @@ sections.forEach(section => {
 });
 
 // ===== Smooth Scroll with Navbar Offset =====
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
         e.preventDefault();
@@ -115,7 +117,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const offset = navbar.offsetHeight;
             window.scrollTo({
                 top: target.offsetTop - offset,
-                behavior: 'smooth'
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
             });
         }
     });
