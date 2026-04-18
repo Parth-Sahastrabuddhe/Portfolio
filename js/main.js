@@ -141,7 +141,34 @@ filterBtns.forEach(btn => {
                 card.classList.add('hidden');
             }
         });
+
+        equalizeProjectCards();
     });
+});
+
+// ===== Equalize Project Card Heights =====
+function equalizeProjectCards() {
+    if (window.innerWidth < 768) {
+        projectCards.forEach(c => { c.style.minHeight = ''; });
+        return;
+    }
+    const visible = Array.from(projectCards).filter(c => !c.classList.contains('hidden'));
+    visible.forEach(c => { c.style.minHeight = ''; });
+    requestAnimationFrame(() => {
+        let max = 0;
+        visible.forEach(c => {
+            if (c.offsetHeight > max) max = c.offsetHeight;
+        });
+        visible.forEach(c => { c.style.minHeight = max + 'px'; });
+    });
+}
+
+window.addEventListener('load', equalizeProjectCards);
+
+let cardResizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(cardResizeTimer);
+    cardResizeTimer = setTimeout(equalizeProjectCards, 150);
 });
 
 // ===== Contact Form =====
