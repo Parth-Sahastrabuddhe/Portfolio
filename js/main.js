@@ -1,214 +1,93 @@
-// ===== Cookie Consent & Google Analytics =====
+// Theme toggle, analytics consent, and the contact form. Navigation and scrolling are plain HTML/CSS.
 const GA_ID = 'G-E5YZHSZVF8';
 
-function loadGA() {
+// localStorage throws when the visitor blocks site data; every read and write goes through here.
+const storage = {
+    get(key) {
+        try { return localStorage.getItem(key); } catch { return null; }
+    },
+    set(key, value) {
+        try { localStorage.setItem(key, value); } catch { /* storage blocked: keep the in-memory state only */ }
+    },
+};
+
+// ===== Theme =====
+const root = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function currentTheme() {
+    return root.dataset.theme || (prefersDark.matches ? 'dark' : 'light');
+}
+
+function labelThemeToggle() {
+    themeToggle.setAttribute('aria-label', currentTheme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+}
+
+themeToggle.addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    storage.set('theme', next);
+    labelThemeToggle();
+});
+
+prefersDark.addEventListener('change', labelThemeToggle);
+labelThemeToggle();
+
+// ===== Analytics consent =====
+function loadAnalytics() {
     const script = document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
     document.head.appendChild(script);
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GA_ID);
+    window.gtag = function gtag() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
 }
 
-(function initCookieConsent() {
-    const banner = document.getElementById('cookieBanner');
-    const consent = localStorage.getItem('cookie-consent');
+const banner = document.getElementById('cookieBanner');
+const consent = storage.get('cookie-consent');
 
-    if (consent === 'accepted') {
-        loadGA();
-    } else if (consent !== 'declined') {
-        banner.classList.add('visible');
-    }
+if (consent === 'accepted') {
+    loadAnalytics();
+} else if (consent !== 'declined') {
+    banner.hidden = false;
+}
 
-    document.getElementById('cookieAccept').addEventListener('click', () => {
-        localStorage.setItem('cookie-consent', 'accepted');
-        banner.classList.remove('visible');
-        loadGA();
-    });
+function answerConsent(value) {
+    storage.set('cookie-consent', value);
+    banner.hidden = true;
+    if (value === 'accepted') loadAnalytics();
+}
 
-    document.getElementById('cookieDecline').addEventListener('click', () => {
-        localStorage.setItem('cookie-consent', 'declined');
-        banner.classList.remove('visible');
-    });
-})();
+document.getElementById('cookieAccept').addEventListener('click', () => answerConsent('accepted'));
+document.getElementById('cookieDecline').addEventListener('click', () => answerConsent('declined'));
 
-// ===== DOM Elements =====
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-const sections = document.querySelectorAll('.section');
-const navbar = document.querySelector('.navbar');
-const themeToggle = document.getElementById('themeToggle');
+// ===== Contact form =====
 const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
 
-// ===== Theme Toggle =====
-function getTheme() {
-    return document.documentElement.getAttribute('data-theme');
-}
+contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const button = contactForm.querySelector('button[type="submit"]');
+    button.disabled = true;
+    button.textContent = 'Sending…';
+    formStatus.textContent = '';
 
-function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-}
-
-themeToggle.addEventListener('click', () => {
-    setTheme(getTheme() === 'dark' ? 'light' : 'dark');
-});
-
-// ===== Mobile Navigation =====
-navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
-});
-
-// ===== Active Nav Link on Scroll =====
-const updateActiveLink = () => {
-    const scrollY = window.scrollY + 100;
-
-    sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
-
-        if (scrollY >= top && scrollY < top + height) {
-            navLinks.querySelectorAll('a').forEach(a => {
-                a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
-            });
-        }
-    });
-};
-
-window.addEventListener('scroll', updateActiveLink, { passive: true });
-
-// ===== Intersection Observer: Fade-in =====
-const observer = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+    try {
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { Accept: 'application/json' },
         });
-    },
-    { threshold: 0.1 }
-);
-
-sections.forEach(section => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-});
-
-// ===== Smooth Scroll with Navbar Offset =====
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) {
-            const offset = navbar.offsetHeight;
-            window.scrollTo({
-                top: target.offsetTop - offset,
-                behavior: prefersReducedMotion ? 'auto' : 'smooth'
-            });
-        }
-    });
-});
-
-// ===== Project Category Filters =====
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        projectCards.forEach(card => {
-            if (filter === 'all' || card.dataset.category === filter) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-
-        equalizeProjectCards();
-    });
-});
-
-// ===== Equalize Project Card Heights =====
-function equalizeProjectCards() {
-    if (window.innerWidth < 768) {
-        projectCards.forEach(c => { c.style.minHeight = ''; });
-        return;
+        if (!response.ok) throw new Error(`Formspree responded ${response.status}`);
+        contactForm.reset();
+        formStatus.textContent = 'Message sent.';
+    } catch {
+        formStatus.textContent = 'Message not sent. Email sahastrabuddhe.parth@gmail.com instead.';
+    } finally {
+        button.disabled = false;
+        button.textContent = 'Send message';
     }
-    const visible = Array.from(projectCards).filter(c => !c.classList.contains('hidden'));
-    visible.forEach(c => { c.style.minHeight = ''; });
-    requestAnimationFrame(() => {
-        let max = 0;
-        visible.forEach(c => {
-            if (c.offsetHeight > max) max = c.offsetHeight;
-        });
-        visible.forEach(c => { c.style.minHeight = max + 'px'; });
-    });
-}
-
-window.addEventListener('load', equalizeProjectCards);
-
-let cardResizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(cardResizeTimer);
-    cardResizeTimer = setTimeout(equalizeProjectCards, 150);
 });
-
-// ===== Contact Form =====
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const btn = contactForm.querySelector('.btn-submit');
-        const btnText = btn.querySelector('.btn-text');
-        const btnLoading = btn.querySelector('.btn-loading');
-        const status = document.getElementById('formStatus');
-
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'inline';
-        btn.disabled = true;
-        status.textContent = '';
-        status.className = 'form-status';
-
-        try {
-            const response = await fetch(contactForm.action, {
-                method: 'POST',
-                body: new FormData(contactForm),
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                status.textContent = 'Message sent! I\'ll get back to you soon.';
-                status.classList.add('success');
-                contactForm.reset();
-            } else {
-                status.textContent = 'Something went wrong. Please try again or email me directly.';
-                status.classList.add('error');
-            }
-        } catch {
-            status.textContent = 'Network error. Please try again or email me directly.';
-            status.classList.add('error');
-        }
-
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
-        btn.disabled = false;
-    });
-}
